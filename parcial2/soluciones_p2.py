@@ -32,3 +32,21 @@ def f2(func):
                 return None
         print("Leer la documentación")
     return wrapper
+
+'''
+Punto 3.1
+'''
+def f3i(n):
+    digito=0
+    while n//10 != 0:
+        n = n//10
+    digito += n
+    return digito
+
+'''
+Punto 3.2
+'''
+def f3r(n):
+    if n//10 == 0:
+        return n
+    return 0 + f3r(n//10)
