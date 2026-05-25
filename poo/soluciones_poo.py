@@ -75,3 +75,42 @@ class PolinomiosDerivables(Polinomio):
 
   def grado(self):
     return f'Este polinomio es de grado {len(self.L)-1}'
+  
+'''ejercicio cajero'''
+class Cajero:
+    def __init__(self, n1, n2, n5):
+        self.n1 = n1
+        self.n2 = n2
+        self.n5 = n5
+
+    def retiro(self, x):
+        if x <= 0 or x % 10000 != 0:
+            return "El retiro debe ser positivo y múltiplo de 10000"
+        copia_n1 = self.n1
+        copia_n2 = self.n2
+        copia_n5 = self.n5
+        while x != 0:
+            if x >= 50000 and copia_n5 > 0:
+                x -= 50000
+                copia_n5 -= 1
+            elif x >= 20000 and copia_n2 > 0:
+                x -= 20000
+                copia_n2 -= 1
+            elif x >= 10000 and copia_n1 > 0:
+                x -= 10000
+                copia_n1 -= 1
+            else:
+                return "No hay billetes suficientes para realizar el retiro"
+        self.n1 = copia_n1
+        self.n2 = copia_n2
+        self.n5 = copia_n5
+        return "Retiro realizado correctamente"
+
+    def consignacion(self, n1, n2, n5):
+        self.n1 += n1
+        self.n2 += n2
+        self.n5 += n5
+        return "Consignación realizada"
+
+    def verificar_estado(self):
+        return f"Billetes de 10000: {self.n1} Billetes de 20000: {self.n2} Billetes de 50000: {self.n5}"  
